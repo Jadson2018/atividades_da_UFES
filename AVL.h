@@ -2,7 +2,7 @@
 #define __AVL_H__
 #include<stdio.h>
 #include<stdlib.h>
-//Grupo:Jadson Costa de Amorim e Jo„o Pedro Souza Andrade
+//Autor:Jadson Costa de Amorim
 //estrutura da arvore AVL
 typedef struct no{
 	void* info;
@@ -10,79 +10,79 @@ typedef struct no{
 	struct no *esquerdo, *direito;
 }No;
 
-//FUN«’ES IMPLEMENTADAS//
+//FUN√á√ïES IMPLEMENTADAS//
 
-//Inicio do nÛ
-//recebe uma chave que ser· adicionada ao novo nÛ criado
-//o retorno È a nova chave
+//Inicio do n√≥
+//recebe uma chave que ser√° adicionada ao novo n√≥ criado
+//o retorno √© a nova chave
 No *inicioNo(void *chave);
 
-//funÁ„o que trata a rotaÁ„o ‡ direita
-// recebe o ponteiro para a ·rvore e um ponteiro para inteiro que È tratado como booleano
-//o retorno È a ·rvore rotacionada ‡ direita
+//fun√ß√£o que trata a rota√ß√£o √† direita
+// recebe o ponteiro para a √°rvore e um ponteiro para inteiro que √© tratado como booleano
+//o retorno √© a √°rvore rotacionada √† direita
 No *caso1(No *v, int *h);
 
-//funÁ„o que trata a rotaÁ„o ‡ esquerda
-// recebe o ponteiro para a ·rvore e um ponteiro para inteiro que È tratado como booleano
-//o retorno È a ·rvore rotacionada ‡ esquerda
+//fun√ß√£o que trata a rota√ß√£o √† esquerda
+// recebe o ponteiro para a √°rvore e um ponteiro para inteiro que √© tratado como booleano
+//o retorno √© a √°rvore rotacionada √† esquerda
 No *caso2(No *v, int *h);
 
-//funÁ„o que isere de forma balanceada os nÛs da ·rvore
-// recebe o ponteiro para a ·rvore, o ponteiro para inteiro, a chave do nÛ que ser· feita a inserÁ„o e as funÁıes de comparaÁ„o de igualdade e maior ou menor para o tipo 
+//fun√ß√£o que isere de forma balanceada os n√≥s da √°rvore
+// recebe o ponteiro para a √°rvore, o ponteiro para inteiro, a chave do n√≥ que ser√° feita a inser√ß√£o e as fun√ß√µes de compara√ß√£o de igualdade e maior ou menor para o tipo 
 //de dado da chave
-//o retorno È a ·rvore balanceada com o novo nÛ
+//o retorno √© a √°rvore balanceada com o novo n√≥
 No *insereAVL(No *v, int *h, void *x, int (*comparaChave)(void*,void*), int (*e_maior)(void*,void*));
 
-//funÁ„o para imprimir a ·rvore
-// recebe o ponteiro para a ·rvore o nÌvel que dever· ser o valor 1 e uma funÁ„o para imprimir o tipo de dado da chave
-//È um procedimento e apenas imprime
+//fun√ß√£o para imprimir a √°rvore
+// recebe o ponteiro para a √°rvore o n√≠vel que dever√° ser o valor 1 e uma fun√ß√£o para imprimir o tipo de dado da chave
+//√© um procedimento e apenas imprime
 void imprimeArvore(No *T, int nivel, void (*imprimir)(void*));
 
-//funÁ„o que busca um nÛ na ·rvore com uma determinada chave passada como par‚metro
-//recebe um ponteiro para a ·rvore, um ponteiro que apontar· para o pai do nÛ encontrado
-//a chave a ser procurada, a funÁ„o de comparaÁ„o de chaves para o tipo de dado da chave e a que verifica se È maior ou menor
-//retorna o nÛ buscado
+//fun√ß√£o que busca um n√≥ na √°rvore com uma determinada chave passada como par√¢metro
+//recebe um ponteiro para a √°rvore, um ponteiro que apontar√° para o pai do n√≥ encontrado
+//a chave a ser procurada, a fun√ß√£o de compara√ß√£o de chaves para o tipo de dado da chave e a que verifica se √© maior ou menor
+//retorna o n√≥ buscado
 No *busca(No *T, No **pai, void *ch, int (*comparaChave)(void*,void*), int (*e_maior)(void*,void*));
 
-//verifica qual o sucessor de um nÛ da ·rvore
-//recebe o ponteiro para a ·rvore e um ponteiro que aponta para o pai desse nÛ
-//retorna o nÛ sucessor
+//verifica qual o sucessor de um n√≥ da √°rvore
+//recebe o ponteiro para a √°rvore e um ponteiro que aponta para o pai desse n√≥
+//retorna o n√≥ sucessor
 No *sucessor(No *P, No **paiP);
 
-//funÁ„o que remove um nÛ da ·rvore de acordo com uma chave
-//recebe, o ponteiro para a ·rvore, a chave e as funÁıes que s„o passadas como par‚metro da funÁ„o busca
-//retorna a ·rvore com um nÛ removido
+//fun√ß√£o que remove um n√≥ da √°rvore de acordo com uma chave
+//recebe, o ponteiro para a √°rvore, a chave e as fun√ß√µes que s√£o passadas como par√¢metro da fun√ß√£o busca
+//retorna a √°rvore com um n√≥ removido
 No *removeChave(No *T, void *ch, int (*comparaChave)(void*,void*), int (*e_maior)(void*,void*));
 
-//funÁ„o que busca um nÛ da ·rvore de acordo com uma chave, basicamente o que faz a funÁ„o busca porÈm n„o È usada na funÁ„o de remoÁ„o
-//foi implementada como alternativa a busca por n„o precisar de um ponteiro para o pai e por isso ser melhor para ser usada externamente
-//recebe um ponteiro para o nÛ, a chave a ser buscada e as funÁıes que verificam se duas chaves s„o iguais maiores ou menores implementadas para o tipo de dado da chave
-//retorna o nÛ buscado
+//fun√ß√£o que busca um n√≥ da √°rvore de acordo com uma chave, basicamente o que faz a fun√ß√£o busca por√©m n√£o √© usada na fun√ß√£o de remo√ß√£o
+//foi implementada como alternativa a busca por n√£o precisar de um ponteiro para o pai e por isso ser melhor para ser usada externamente
+//recebe um ponteiro para o n√≥, a chave a ser buscada e as fun√ß√µes que verificam se duas chaves s√£o iguais maiores ou menores implementadas para o tipo de dado da chave
+//retorna o n√≥ buscado
 No *buscaChave(No *T, void *ch, int (*comparaChave)(void*,void*), int (*e_maior)(void*,void*));
 
-//funÁ„o que verifica se a ·rvore È vazia
-//recebe o ponteiro para a ·rvore
+//fun√ß√£o que verifica se a √°rvore √© vazia
+//recebe o ponteiro para a √°rvore
 //retorna 
 int arvoreVazia(No *A);
 
-//funÁ„o que esvazia a ·rvore
-//recebe o ponteiro para a ·rvore
-//retorna a ·rvore vazia
+//fun√ß√£o que esvazia a √°rvore
+//recebe o ponteiro para a √°rvore
+//retorna a √°rvore vazia
 No *liberarArvore(No *A);
 
-//FUN«’ES QUE PRECISAM SER IMPLEMENTADAS//
+//FUN√á√ïES QUE PRECISAM SER IMPLEMENTADAS//
 //imprime de acordo com o tipo de dado definido pela chave
-//recebe a chave do nÛ
+//recebe a chave do n√≥
 //imprime o tipo de dado definido
 void imprimir(void* info);
 
-//compara se uma chave È igual a outra de acordo com o tipo definido
+//compara se uma chave √© igual a outra de acordo com o tipo definido
 //recebe duas chaves
 //retorna 1 para verdadeiro e 0 para falso
 int comparaChave(void* info, void* ch);
 
-//compara se a primeira chave È maior que a segunda
-//recebe uma chave do nÛ analisado e uma chave a ser comparada
+//compara se a primeira chave √© maior que a segunda
+//recebe uma chave do n√≥ analisado e uma chave a ser comparada
 //retorna 1 caso seja maior e 0 caso menor
 int e_maior(void* info, void* ch);
 
