@@ -1,6 +1,6 @@
 #include "AVL.h"
-//Grupo:Jadson Costa de Amorim e João Pedro Souza Andrade
-//função que cria um novo nó
+//Autor:Jadson Costa de Amorim
+//funÃ§Ã£o que cria um novo nÃ³
 No *inicioNo(void *chave){ 
 	No *novo;
 	novo = (No*)malloc(sizeof(No));
@@ -14,18 +14,18 @@ No *inicioNo(void *chave){
     novo->bal = 0;
 	return  novo;
 }
-//função que trata a rotação a direita
+//funÃ§Ã£o que trata a rotaÃ§Ã£o a direita
 No *caso1(No *v, int *h){
 	No *u,*z;
 	u = v->esquerdo;
-	//rotação simples a direita
+	//rotaÃ§Ã£o simples a direita
 	if(u->bal==1){
 		v->esquerdo = u->direito;
 		u->direito = v;
 		v->bal = 0;
 		v = u;
 	}
-	//rotação dupla a direita
+	//rotaÃ§Ã£o dupla a direita
 	else{
 		z = u->direito;
 		u->direito = z->esquerdo;
@@ -45,22 +45,22 @@ No *caso1(No *v, int *h){
 		}
 		v = z;
 	}
-	v->bal = 0;  //após a árvore ser baleanceada o campo fator de balanceamento recebe 0
+	v->bal = 0;  //apÃ³s a Ã¡rvore ser baleanceada o campo fator de balanceamento recebe 0
 	*h = 0;      
 	return v;
 }
-//função que trata a rotação a esquerda
+//funÃ§Ã£o que trata a rotaÃ§Ã£o a esquerda
 No *caso2(No *v, int *h){
 	No *u,*z;
     u = v->direito;
     
-    //rotação simples a esquerda
+    //rotaÃ§Ã£o simples a esquerda
     if(u->bal == -1){
     	v->direito = u->esquerdo;
     	u->esquerdo = v;
     	v->bal = 0;
     	v = u;
-	}else{ //rotação dupla a esquerda
+	}else{ //rotaÃ§Ã£o dupla a esquerda
 		z = u->esquerdo;
 		u->esquerdo = z->direito;
 		z->direito = u;
@@ -89,7 +89,7 @@ No *insereAVL(No *v, int *h, void* x, int (*comparaChave)(void*,void*), int (*e_
 		  return v;
 	}else{
 		   if(comparaChave(v->info,x)==1){
-		   	  printf("já existe um elemento com essa chave\n");
+		   	  printf("jÃ¡ existe um elemento com essa chave\n");
 		   	  return v;
 	       }
 		   if(e_maior(v->info,x)==1){
